@@ -2,6 +2,7 @@
 # libcurl4-openssl-dev
 # python-dev
 # libjpeg-dev 
+picamera
 pycurl
 simplejson
 tornado

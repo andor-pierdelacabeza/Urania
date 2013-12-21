@@ -8,7 +8,7 @@ import random
 
 
 #Cosas a definir
-demoimg = 'resources/moon.jpg'
+demoimg = '/tmp/pic.jpg'
 listenPort = 8080
 
 class OjeteHandler(tornado.web.RequestHandler):
