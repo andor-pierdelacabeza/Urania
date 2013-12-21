@@ -1,0 +1,8 @@
+#Debian reqs:
+# libcurl4-openssl-dev
+# python-dev
+# libjpeg-dev 
+pycurl
+simplejson
+tornado
+pillow
