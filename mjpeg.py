@@ -1,3 +1,4 @@
+from tornado.options import define, options
 import tornado.ioloop
 import tornado.web
 import tornado.gen
@@ -5,11 +6,12 @@ import time, os
 from PIL import Image, ImageDraw
 from StringIO import StringIO
 import random
+import opts
 
 
 #Cosas a definir
-demoimg = '/tmp/pic.jpg'
-listenPort = 8080
+targetStreamImg = '/tmp/pic.jpg'
+
 
 class OjeteHandler(tornado.web.RequestHandler):
     def get(self):
@@ -24,7 +26,7 @@ class MJPEGHandler(tornado.web.RequestHandler):
 	self.set_status(200)
 	self.set_header('Content-type','multipart/x-mixed-replace; boundary=--boundary')
         while True:
-            staticimg = Image.open(demoimg)
+	    staticimg = Image.open(targetStreamImg)
 	    imgx, imgy= staticimg.size
 	    stamp = str(time.strftime("%d/%m/%Y")) + ' - ' + (time.strftime("%H:%M:%S"))
 	    stampimg = ImageDraw.Draw(staticimg)
@@ -40,7 +42,7 @@ class MJPEGHandler(tornado.web.RequestHandler):
 
 class JPEGHandler(tornado.web.RequestHandler):
     def get(self):
-	staticimg = Image.open(demoimg)
+	staticimg = Image.open(targetStreamImg)
 	img_io = StringIO()
 	staticimg.save(img_io, 'JPEG', quality=70)
         self.set_header('Content-type','image/jpeg')
@@ -66,6 +68,7 @@ application = tornado.web.Application([
 
 
 
-print 'Serving on ' + str(listenPort) + '...'
-application.listen(listenPort)
+print 'Platform ' + options.platform + ' with camera ' + options.camera
+print 'Serving on ' + str(options.port) + '...'
+application.listen(options.port)
 tornado.ioloop.IOLoop.instance().start()
