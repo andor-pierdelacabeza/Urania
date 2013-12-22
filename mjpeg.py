@@ -68,7 +68,8 @@ application = tornado.web.Application([
 
 
 
-print 'Platform ' + options.platform + ' with camera ' + options.camera
-print 'Serving on ' + str(options.port) + '...'
-application.listen(options.port)
-tornado.ioloop.IOLoop.instance().start()
+if __name__ == "__main__":
+	print 'Platform ' + options.platform + ' with camera ' + options.camera
+	print 'Serving on ' + str(options.port) + '...'
+	application.listen(options.port)
+	tornado.ioloop.IOLoop.instance().start()
