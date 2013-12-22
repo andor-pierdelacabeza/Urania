@@ -1,4 +1,5 @@
 {% extends "base.html" %}
+{% block title %}Live Stream{% end %}
 
 {% block header %}
   <h1>Live Feed!</h1>
@@ -6,10 +7,25 @@
 
 {% block content %}
 
-Hola tu.
+<div class="CssCam" >
+                <table >
+                    <tr>
+                        <td>
+                            Live Stream
+                        </td>
+                    </tr>
+                    <tr>
+                        <td >
+                            <img src="/image.mjpg"/>
+                        </td>
+                        <td>
+                            Actualiza
+                        </td>
+                    </tr>
+                </table>
+            </div>
 
-<img src="/image.mjpg"/>
-  
+
 {% end %}
 
 {% block footer %}
