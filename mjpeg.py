@@ -7,6 +7,7 @@ from PIL import Image, ImageDraw
 from StringIO import StringIO
 import random
 import opts
+import temp
 
 
 #Cosas a definir
