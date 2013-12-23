@@ -53,7 +53,7 @@ class JPEGHandler(tornado.web.RequestHandler):
 
 class CamHandler(tornado.web.RequestHandler):
     def get(self):
-	self.render("templates/cam.html")
+	self.render("templates/cam.html", cpuTemp=temp.getCpuTemp(), gpuTemp=temp.getGpuTemp())
 
 settings = {
     "static_path": os.path.join(os.path.dirname(__file__), "static"),
